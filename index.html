@@ -3,30 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>World Clock Amanda</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/moment-timezone@0.5.43/builds/moment-timezone-with-data.min.js"></script>
+    <title>World Clock by Amanda</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.37/moment-timezone-with-data-1970-2030.min.js"></script>
   </head>
-
   <body>
-    <h1>World Clock</h1>
-    <select>
-      <option value="">Select a city ..</option>
-      <option value="">London</option>
-      <option value="">New York</option>
-      <option value="">Auckland</option>
-    </select>
-    <div class="city">
-      <h2>Los Angeles 🇺🇸</h2>
-      <div class="date" id="la-date">August 15th 2022</div>
-      <div class="time" id="la-time">3:27:15</div>
-    </div>
+    <div class="container">
+      <h1>World Clock</h1>
 
-    <div class="city">
-      <h2>Auckland 🇦🇺</h2>
-      <div class="date" id="auckland-date">August 15th 2022</div>
-      <div class="time" id="auckland-time">3:27:15</div>
+      <select id="city">
+        <option value="">Select a city...</option>
+        <option value="Europe/London">London 🇬🇧</option>
+        <option value="America/New_York">New York 🇺🇸</option>
+        <option value="Pacific/Auckland">Auckland 🇳🇿</option>
+      </select>
+
+      <div id="cities">
+        <div class="city" id="los-angeles">
+          <div>
+            <h2>Los Angeles 🇺🇸</h2>
+            <div class="date"></div>
+          </div>
+          <div class="time"></div>
+        </div>
+
+        <div class="city" id="paris">
+          <div>
+            <h2>Paris 🇫🇷</h2>
+            <div class="date"></div>
+          </div>
+          <div class="time"></div>
+        </div>
+      </div>
     </div>
 
     <footer>
@@ -39,6 +49,7 @@
         >Netlify</a
       >.
     </footer>
+
     <script src="javascript/index.js"></script>
   </body>
 </html>
