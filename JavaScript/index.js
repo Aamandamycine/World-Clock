@@ -24,7 +24,9 @@ function updateTime() {
     let losAngelesTime = losAngelesElement.querySelector(".time");
     let laTime = moment().tz("America/Los_Angeles");
     losAngelesDate.innerHTML = laTime.format("MMMM Do YYYY");
-    losAngelesTime.innerHTML = laTime.format("h:mm:ss [<small>]A[</small>]");
+    losAngelesTime.innerHTML = `${laTime.format(
+      "h:mm:ss"
+    )} <small>${laTime.format("A")}</small>`;
   }
 
   // 🔹 Paris
@@ -34,8 +36,17 @@ function updateTime() {
     let parisTime = parisElement.querySelector(".time");
     let parisNow = moment().tz("Europe/Paris");
     parisDate.innerHTML = parisNow.format("MMMM Do YYYY");
-    parisTime.innerHTML = parisNow.format("h:mm:ss [<small>]A[</small>]");
+    parisTime.innerHTML = `${parisNow.format(
+      "h:mm:ss"
+    )} <small>${parisNow.format("A")}</small>`;
   }
+
+  // 🔹 Background theme (day/night)
+  let hour = localTime.hour();
+  let isDay = hour >= 6 && hour < 18;
+  let body = document.querySelector("body");
+  body.classList.remove("daytime", "nighttime");
+  body.classList.add(isDay ? "daytime" : "nighttime");
 }
 
 function updateCity(event) {
