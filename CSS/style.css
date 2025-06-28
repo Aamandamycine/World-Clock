@@ -5,6 +5,27 @@ body {
   margin: 0;
   padding: 20px;
 }
+body {
+  font-family: "Fredoka", sans-serif;
+}
+body {
+  background: linear-gradient(to bottom, #fceaff, #f3f8ff);
+}
+.container {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+.city:nth-child(1) {
+  background: #fff3f3;
+}
+.city:nth-child(2) {
+  background: #eaf9ff;
+}
+.city:nth-child(3) {
+  background: #f9f2ff;
+}
 
 h1 {
   text-align: center;
@@ -63,4 +84,27 @@ footer a {
 
 footer a:hover {
   text-decoration: underline;
+}
+body.daytime {
+  background: linear-gradient(to bottom, #fff7d6, #d6f4ff); /* pastel sunrise */
+  transition: background 1s ease;
+}
+
+body.nighttime {
+  background: linear-gradient(to bottom, #1e1e3f, #3a2f60); /* soft night */
+  transition: background 1s ease;
+  color: #f0f0f0;
+}
+
+.stars {
+  background: url("https://www.transparenttextures.com/patterns/stardust.png"); /* optional subtle star layer */
+  background-repeat: repeat;
+  opacity: 0.3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  pointer-events: none;
 }
