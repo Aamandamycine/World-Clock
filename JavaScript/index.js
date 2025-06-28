@@ -40,21 +40,31 @@ function updateTime() {
 
 function updateCity(event) {
   let cityTimeZone = event.target.value;
-  if (!cityTimeZone) return;
 
-  let cityName = cityTimeZone.replace("_", " ").split("/")[1];
+  if (!cityTimeZone) {
+    // If no city selected, do nothing or reset view
+    return;
+  }
+
+  // Split timezone string safely
+  let parts = cityTimeZone.split("/");
+  // Get city name, replace underscores with spaces, fallback to full value if missing
+  let cityName = parts.length > 1 ? parts[1].replace(/_/g, " ") : cityTimeZone;
+
+  // Get moment time with timezone
   let cityTime = moment().tz(cityTimeZone);
-  let citiesElement = document.querySelector("#cities");
 
+  // Build city display HTML
+  let citiesElement = document.querySelector("#cities");
   citiesElement.innerHTML = `
       <div class="city">
         <div>
           <h2>${cityName}</h2>
           <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
         </div>
-        <div class="time">
-          ${cityTime.format("h:mm:ss")} <small>${cityTime.format("A")}</small>
-        </div>
+        <div class="time">${cityTime.format(
+          "h:mm:ss"
+        )} <small>${cityTime.format("A")}</small></div>
       </div>
   
       <br />
@@ -63,10 +73,10 @@ function updateCity(event) {
       </div>
     `;
 
-  // 👇 Add event listener to restore homepage
+  // Add listener to “Back to all cities” link
   document.querySelector("#home-link").addEventListener("click", function (e) {
     e.preventDefault();
-    location.reload(); // simplest way to restore the original content
+    location.reload(); // reload page to reset to all cities view
   });
 }
 
