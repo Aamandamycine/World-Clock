@@ -1,5 +1,23 @@
 function updateTime() {
-  // Los Angeles
+  // 🔹 Current location
+  let localTimezone = moment.tz.guess();
+  let localTime = moment().tz(localTimezone);
+
+  let localDateElement = document.querySelector("#local-date");
+  let localTimeElement = document.querySelector("#local-time");
+
+  if (localDateElement && localTimeElement) {
+    localDateElement.innerHTML = `${localTime.format(
+      "MMMM Do YYYY"
+    )} — ${localTimezone}`;
+    let isMorning = localTime.format("A") === "AM";
+    let emoji = isMorning ? "🌞" : "🌙";
+    localTimeElement.innerHTML = `${localTime.format(
+      "h:mm:ss"
+    )} <small>${localTime.format("A")}</small> ${emoji}`;
+  }
+
+  // 🔹 Los Angeles
   let losAngelesElement = document.querySelector("#los-angeles");
   if (losAngelesElement) {
     let losAngelesDate = losAngelesElement.querySelector(".date");
@@ -9,7 +27,7 @@ function updateTime() {
     losAngelesTime.innerHTML = laTime.format("h:mm:ss [<small>]A[</small>]");
   }
 
-  // Paris
+  // 🔹 Paris
   let parisElement = document.querySelector("#paris");
   if (parisElement) {
     let parisDate = parisElement.querySelector(".date");
