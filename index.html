@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>World Clock Amanda</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment-timezone@0.5.43/builds/moment-timezone-with-data.min.js"></script>
   </head>
+
   <body>
     <h1>World Clock</h1>
     <select>
@@ -15,14 +19,16 @@
     </select>
     <div class="city">
       <h2>Los Angeles 🇺🇸</h2>
-      <div class="date">August 15th 2022</div>
-      <div class="time">3:27:15</div>
+      <div class="date" id="la-date">August 15th 2022</div>
+      <div class="time" id="la-time">3:27:15</div>
     </div>
+
     <div class="city">
       <h2>Auckland 🇦🇺</h2>
-      <div class="date">August 15th 2022</div>
-      <div class="time">3:27:15</div>
+      <div class="date" id="auckland-date">August 15th 2022</div>
+      <div class="time" id="auckland-time">3:27:15</div>
     </div>
+
     <footer>
       Coded with ❤️ by Amanda Ntumba Kapinga —
       <a href="https://github.com/Aamandamycine" target="_blank"
