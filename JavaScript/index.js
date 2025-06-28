@@ -65,3 +65,15 @@ setInterval(updateTime, 1000);
 // City change listener
 let citySelect = document.querySelector("#city");
 citySelect.addEventListener("change", updateCity);
+function updateTime() {
+  let localTimezone = moment.tz.guess();
+  let localTime = moment().tz(localTimezone);
+  let hour = localTime.hour();
+
+  // 🌞 Daytime 6AM–6PM, 🌙 Night otherwise
+  let isDay = hour >= 6 && hour < 18;
+
+  let body = document.querySelector("body");
+  body.classList.remove("daytime", "nighttime");
+  body.classList.add(isDay ? "daytime" : "nighttime");
+}
