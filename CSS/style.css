@@ -28,10 +28,41 @@ body {
 }
 
 h1 {
+  font-family: "Fredoka", sans-serif;
+  font-size: 48px;
   text-align: center;
-  color: #2c3e50;
-  font-size: 32px;
+  color: #5b3cc4;
   margin-bottom: 30px;
+  position: relative;
+  animation: popIn 1s ease-out;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+h1::after {
+  content: " ⏰";
+  font-size: 32px;
+  animation: bounce 2s infinite;
+  display: inline-block;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
 select {
@@ -107,4 +138,18 @@ body.nighttime {
   width: 100%;
   z-index: 0;
   pointer-events: none;
+}
+.back-home {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#home-link {
+  font-size: 18px;
+  color: #8860d0;
+  text-decoration: none;
+  font-weight: bold;
+}
+#home-link:hover {
+  text-decoration: underline;
 }

@@ -39,23 +39,35 @@ function updateTime() {
 }
 
 function updateCity(event) {
-  let timezone = event.target.value;
-  if (timezone.length > 0) {
-    let cityName = timezone.split("/")[1].replace("_", " ");
-    let cityTime = moment().tz(timezone);
-    let cities = document.querySelector("#cities");
-    cities.innerHTML = `
-        <div class="city">
-          <div>
-            <h2>${cityName}</h2>
-            <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
-          </div>
-          <div class="time">${cityTime.format(
-            "h:mm:ss"
-          )} <small>${cityTime.format("A")}</small></div>
+  let cityTimeZone = event.target.value;
+  if (!cityTimeZone) return;
+
+  let cityName = cityTimeZone.replace("_", " ").split("/")[1];
+  let cityTime = moment().tz(cityTimeZone);
+  let citiesElement = document.querySelector("#cities");
+
+  citiesElement.innerHTML = `
+      <div class="city">
+        <div>
+          <h2>${cityName}</h2>
+          <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
         </div>
-      `;
-  }
+        <div class="time">
+          ${cityTime.format("h:mm:ss")} <small>${cityTime.format("A")}</small>
+        </div>
+      </div>
+  
+      <br />
+      <div class="back-home">
+        <a href="#" id="home-link">← Back to all cities</a>
+      </div>
+    `;
+
+  // 👇 Add event listener to restore homepage
+  document.querySelector("#home-link").addEventListener("click", function (e) {
+    e.preventDefault();
+    location.reload(); // simplest way to restore the original content
+  });
 }
 
 // Run time immediately and every second
